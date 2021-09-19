@@ -12,12 +12,12 @@ const Products = ({ }) => {
     const [activeCategory, setActiveCategory] = React.useState(0)
     let descriptionProducts = useSelector(getDescriptionProduct)
     console.log(descriptionProducts)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
 
     React.useEffect(() => {
        dispatch(getAllPizzas())
-    }, [])
+    }, []) //
     return (
         <div class="main">
             <div class="container">

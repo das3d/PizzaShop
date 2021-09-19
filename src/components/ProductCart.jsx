@@ -1,9 +1,15 @@
 import React from 'react'
 import Counter from './CommonComponents/Counter'
+import {useDispatch} from "react-redux";
+import {cartActions} from "../redux/reducers/cartReducer";
 
 
 const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
-    const [quantity, setquantity] = React.useState(1)
+    const dispatch = useDispatch();
+    let deleteProduct = (name) => {
+        console.log(name)
+        dispatch(cartActions.deleteCartProduct(name))
+    }
     return (
        
         <div class="menu__object">
@@ -17,7 +23,7 @@ const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
                         {!isDrink&&<div class="menu__text">
                         {description}
                     </div>}
-                    <div class="menu__delete">
+                    <div class="menu__delete" onClick={()=>deleteProduct(name)}>
                         <img src="/img/delete.png" alt="" />
                     </div>
                 </div>
@@ -29,16 +35,7 @@ const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
                                 ?<div><img src="/img/size_white.png" alt=""/> {size} см.</div>  
                                 :<div><img src="/img/plastic-bottle.svg" alt=""/> {size} л.</div> }
                 </div>
-                  {/* <div class="menu__counter">
 
-                    <div onClick={()=>{setquantity(quantity+1)}} class="menu__plus">
-                        <img src="/img/plus.png" alt="" />
-                    </div>
-                    <div onClick={()=>{setquantity(quantity-1)}} class="menu__minus">
-                        <img src="/img/minus.png" alt="" />
-                    </div>
-                    <div class="menu__count"><span>{quantity}</span> шт.</div>
-                </div>  */}
                 <Counter isCart={true} count={count}/>
                 <div class="menu__price">
                     <span>{price}</span> грн.

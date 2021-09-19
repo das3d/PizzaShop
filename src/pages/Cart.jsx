@@ -4,14 +4,12 @@ import BuyerForm from '../components/BuyerForm';
 import ProductCart from '../components/ProductCart';
 import { useSelector } from 'react-redux'
 import { getAllPizzas } from '../redux/reducers/productReducer';
-import { getDescriptionProduct } from '../selectors/productSelector'
+import { getCartProduct } from '../selectors/productSelector'
 import { useDispatch } from 'react-redux';
 const Cart = () => {
-    const dispatch = useDispatch();
-    let descriptionProducts = useSelector(getDescriptionProduct);
-    React.useEffect(() => {
-        dispatch(getAllPizzas())
-     }, [])
+
+    let descriptionProducts = useSelector(getCartProduct);
+console.log(descriptionProducts)
     return (
         <div class="cart">
             <div class="firstRow">
@@ -26,7 +24,7 @@ const Cart = () => {
             </div>
             <div class="cart__main">
                     <div class="menu">
-                        {descriptionProducts.isLoaded &&descriptionProducts.products.map(descriptionProduct =>
+                        {descriptionProducts.isLoaded && descriptionProducts.cartProducts.map(descriptionProduct =>
                             <ProductCart {...descriptionProduct} />
                         )}
                     </div>

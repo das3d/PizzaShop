@@ -34,7 +34,7 @@ let Product = ({name, description,size, price, count, isDrink,image}) =>{
                             <img src="/img/volna.png" alt=""/>
                         </div>
                         <Counter count={count}/>
-                        <CartButton/>
+                        <CartButton count={count} name={name} description={description} size={size} price={price} isDrink={isDrink} image={image}/>
                         {!isDrink&&<div className="pizza__buy button">
                             <img src="/img/fastbuy.png" alt=""/>
                             купить в один клик

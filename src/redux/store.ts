@@ -1,8 +1,10 @@
 import { combineReducers, createStore, applyMiddleware, compose} from "redux";
 import productReducer from './reducers/productReducer'
 import thunk from 'redux-thunk';
+import cartReducer from "./reducers/cartReducer";
 let rootReducer = combineReducers({
-    productReducer
+    productReducer,
+    cartReducer
 
 })
 declare global {

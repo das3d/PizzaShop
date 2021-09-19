@@ -9,15 +9,15 @@ const BuyerForm = () => {
                 <div class="buyer__first">
                     <div class="buyer__viewdelv">
                         <span class="buyer__desc"><input type="radio"/> Самовывоз</span>
-                        <div class="buyer__addesc">+0 грн.</div>
+                        <div class="buyer__addesc">+0 руб.</div>
                     </div>
                     <span class="buyer__viewdelv">
                         <span class="buyer__desc"><input type="radio"/> Курьер</span>
-                        <div class="buyer__addesc">+45 грн.</div>
+                        <div class="buyer__addesc">+45 руб.</div>
                     </span>
                     <div class="buyer__viewdelv">
                         <span class="buyer__desc"><input type="radio"/> Курьер в костюме</span>
-                        <div class="buyer__addesc">+65 грн.</div>
+                        <div class="buyer__addesc">+65 руб.</div>
                     </div>
 
 
@@ -29,8 +29,8 @@ const BuyerForm = () => {
                         <input class="form__name" type="phone" value="Телефон"/>
                         <textarea class="form__adress" type="text">Адрес</textarea>
                         <div class="form__desc">
-                            Стоимость пиццы: <span>+400 грн.</span><br/>
-                            Стоимость доставки: <span>+65 грн.</span>
+                            Стоимость товаров: <span>+400 руб.</span><br/>
+                            Стоимость доставки: <span>+65 руб.</span>
                         </div>
                     </div>
                     <div class="buyer__imgview">
@@ -51,7 +51,7 @@ const BuyerForm = () => {
                 </div>
                 <div class="buyer__third">
                     <div class="buyer__sum">
-                        Общая стоимость:<br/> <span>465 грн.</span>
+                        Общая стоимость:<br/> <span>465 руб.</span>
                     </div>
                     <div class="buyer__button button">
                         КУПИТЬ

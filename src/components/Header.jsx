@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useSelector} from "react-redux";
+import {getCartProduct} from "../selectors/productSelector";
 
 const Header = ({}) => {
+    let descriptionProducts = useSelector(getCartProduct)
     return (
         <header class="header">
             <img src="/img/salad.png" alt=""/>
@@ -26,7 +29,7 @@ const Header = ({}) => {
                     <Link to="/cart" class="header__cart">
 
                         <img src="/img/cart.png" alt="cart"/>
-                        <span>2</span>
+                        <span>{descriptionProducts.cartProducts.length}</span>
                     </Link>
                 </div>
                 <div class="header__down">
