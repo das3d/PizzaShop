@@ -1,0 +1,103 @@
+{
+  "products": [
+      {
+          "id": 1,
+          "name":"Мюнхенская DeLUX",
+          "description": "Ветчина, Горчица, Колбаски баварские, Моцарелла, Помидоры, Сосиски белые.",
+          "size":36, 
+          "price":129, 
+          "count":1,
+          "isDrink": false,
+          "image": { "large":"/img/Pizza.png", "small": "/img/pizza__smal.png" },
+          "discount": false
+      },
+      {
+        "id": 2,
+          "name":"Спайси",
+          "description": "Халапеньо, Бекон, Моцарелла, Пепперони, Помидоры.",
+          "size":36, 
+          "price":19, 
+          "count":1,
+          "isDrink": false,
+          "image": { "large":"/img/Pizza.png", "small": "/img/pizza__smal.png" },
+          "discount": false
+      },
+      {
+        "id": 3,
+        "name":"Cola",
+        "description": null,
+        "size":0.5, 
+        "price":19, 
+        "count":1,
+        "isDrink": true,
+        "image": { "large":"/img/drink.png", "small": "/img/pizza__smal.png" },
+        "discount": true
+    },
+      {
+        "id": 4,
+          "name":"Fanta",
+          "description": null,
+          "size":0.5, 
+          "price":19, 
+          "count":1,
+          "isDrink": true,
+          "image": { "large":"/img/drink.png", "small": "/img/pizza__smal.png" },
+          "discount": false
+      },
+      {
+        "id": 5,
+          "name":"Спайси",
+          "description": "Халапеньо, Бекон, Моцарелла, Пепперони, Помидоры.",
+          "size":36, 
+          "price":19, 
+          "count":1,
+          "isDrink": false,
+          "image": { "large":"/img/Pizza.png", "small": "/img/pizza__smal.png" },
+          "discount": false
+      },
+      {
+        "id": 6,
+          "name":"Спайси",
+          "description": "Халапеньо, Бекон, Моцарелла, Пепперони, Помидоры.",
+          "size":36, 
+          "price":19, 
+          "count":1,
+          "isDrink": false,
+          "image":{ "large":"/img/Pizza.png", "small": "/img/pizza__smal.png" } ,
+          "discount": true
+      },
+      {
+        "id": 7,
+        "name":"Strite",
+        "description": null,
+        "size":1, 
+        "price":19, 
+        "count":1,
+        "isDrink": true,
+        "image":{ "large":"/img/drink.png", "small": "/img/pizza__smal.png" } ,
+        "discount": false
+    },
+    {
+        "id": 8,
+      "name":"Fanta",
+      "description": null,
+      "size":0.5, 
+      "price":19, 
+      "count":4,
+      "isDrink": true,
+      "image": { "large":"/img/drink.png", "small": "/img/pizza__smal.png" },
+      "discount": true
+  },
+  {
+    "id": 9,
+    "name":"Fantsasa",
+    "description": null,
+    "size":0.5, 
+    "price":19, 
+    "count":1,
+    "isDrink": true,
+    "image":{ "large":"/img/drink.png", "small": "/img/pizza__smal.png" },
+    "discount": true
+}
+  ]
+}
