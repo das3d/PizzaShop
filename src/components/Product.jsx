@@ -1,10 +1,24 @@
-import react from "react";
+import react, {useState} from "react";
 import cn from 'classnames';
 import { CartButton } from "./CartButton";
 import Counter from "./CommonComponents/Counter";
+import React from "react";
+import {getAllPizzas} from "../redux/reducers/productReducer";
 
-let Product = ({name, description,size, price, count, isDrink,image}) =>{
+let Product = ({name, description,size, price, isDrink,image}) =>{
+    const [count, setCount] = useState(0)
+    let plusCount = () =>{
+       setCount(count+1)
 
+    }
+    let minusCount = () => {
+
+        setCount(count-1)
+        // console.log(count);
+    }
+    React.useEffect(() => {
+        console.log(count);
+    }, [count])
     return (
         <div className="pizza">
                         <div className={cn({
@@ -33,8 +47,8 @@ let Product = ({name, description,size, price, count, isDrink,image}) =>{
                         <div className="pizza__volna">
                             <img src="/img/volna.png" alt=""/>
                         </div>
-                        <Counter count={count}/>
-                        <CartButton count={count} name={name} description={description} size={size} price={price} isDrink={isDrink} image={image}/>
+                        <Counter count={count} plusCount={plusCount} minusCount={minusCount}/>
+                        <CartButton count={count} name={name} description={description} size={size} price={price} isDrink={isDrink} image={image} />
                         {!isDrink&&<div className="pizza__buy button">
                             <img src="/img/fastbuy.png" alt=""/>
                             купить в один клик

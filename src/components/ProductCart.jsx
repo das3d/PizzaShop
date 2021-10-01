@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Counter from './CommonComponents/Counter'
 import {useDispatch} from "react-redux";
 import {cartActions} from "../redux/reducers/cartReducer";
@@ -9,6 +9,12 @@ const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
     let deleteProduct = (name) => {
         console.log(name)
         dispatch(cartActions.deleteCartProduct(name))
+    }
+    let [localCount,setLocalCount] = useState(count)
+
+    let plusCount = () => {
+        setLocalCount(localCount+1)
+        dispatch()
     }
     return (
        
@@ -23,7 +29,7 @@ const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
                         {!isDrink&&<div class="menu__text">
                         {description}
                     </div>}
-                    <div class="menu__delete" onClick={()=>deleteProduct(name)}>
+                    <div class="menu__delete"  onClick={()=>deleteProduct(name)}>
                         <img src="/img/delete.png" alt="" />
                     </div>
                 </div>
@@ -36,9 +42,9 @@ const ProductCart = ({name, description,size, price, count, isDrink,image}) => {
                                 :<div><img src="/img/plastic-bottle.svg" alt=""/> {size} л.</div> }
                 </div>
 
-                <Counter isCart={true} count={count}/>
+                <Counter isCart={true} count={localCount}/>
                 <div class="menu__price">
-                    <span>{price}</span> грн.
+                    <span>{price*count}</span> грн.
                 </div>
             </div>
             <div class="smvolna">

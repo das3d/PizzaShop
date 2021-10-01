@@ -1,5 +1,5 @@
 import react, {useEffect} from 'react';
-import { Route } from 'react-router-dom';
+import {BrowserRouter, Route, Router} from 'react-router-dom';
 import { Header, Products,Footer } from './components';
 import './styles.scss'
 import './components/cart/cart.scss'

@@ -1,60 +1,60 @@
-import {getFilterProducts, getPizzas} from "../../DAL/API";
-import {TActions, TRootState} from "../store";
-import {ThunkAction} from "redux-thunk";
+import productReducer, {getAllPizzas, getFilterProduct, productActions, TProduct} from "./productReducer";
+import { productAPI} from "../../DAL/API";
 
-const SET_PRODUCTS = 'SET_PRODUCTS';
-const IS_LOADED_BEGIN = 'IS_LOADED_BEGIN';
 
- export type TProduct = {
-    name: string,
-    description: string,
-    size: number,
-    price: number,
-    count: number,
-    isDrink?: boolean,
+let state = {
+    isLoaded: true,
+    products: []
+}
+let product = {
+    name:"Спайси",
+    description: 'Халапеньо, Бекон, Моцарелла, Пепперони, Помидоры.',
+    size:36,
+    price:19,
+    count:1,
+    isDrink: false,
     image: {
-        large: string,
-        small: string
-    }
-    isDiscount?: boolean
+        large:"/img/Pizza.png",
+        small:"/img/Pizza.png"
+    },
+    isDiscount: false
 }
-let initialState = {
-    isLoaded: false,
-    products: null as Array<TProduct>|null
-}
-type TinitialState = typeof initialState
-const productReducer = (state = initialState, action: TProductActions): TinitialState => {
-    switch (action.type) {
-        case SET_PRODUCTS:{
+test('Length all products should be incremented when server send data',()=>{
+    //1.Create action
+    let action = productActions.setProducts([product])
+    //2.Create new state after call action
+    let newState = productReducer(state, action)
+    //3.Expectation new state
+    expect(newState.products?.length).toBe(1)
+})
+//1.Create MOCK for API
+jest.mock('../../DAL/API')
+const productMock = productAPI as jest.Mocked<typeof productAPI>
 
-            return {...state, products:  action.payload, isLoaded:true}
-        }
-        case IS_LOADED_BEGIN:{
-            return {...state, isLoaded: false}
-        }
-        default: {
-            return state
-        }
-    }
-}
-type TProductActions = TActions<typeof productActions>;
-export const productActions = {
-    isLoadedBegin: () => ({type:IS_LOADED_BEGIN} as const),
-    setProducts:  (payload: TProduct[]) =>({type: SET_PRODUCTS, payload } as const)
-}
 
-export const getAllPizzas = ():ThunkAction<void, TRootState, unknown, TProductActions> => {
-    return async dispatch => {
-        let response = await getPizzas();
-        dispatch(productActions.setProducts(response));
-        console.log(response)
+//Tests for asynchronous actions - thunks
+//2.Identification value was returned MOCK
+productMock.getPizzas.mockReturnValue(Promise.resolve([product]))
+test('Data about products should be received and saved', async ()=>{
+    const thunk = getAllPizzas()
+    //Create substitute for function dispatch and getState
+    const dispatchMock = jest.fn()
+    const getStateMock = jest.fn()
 
-        
-    }
-}
-export const getFilterProduct = (payload:string):ThunkAction<void, TRootState, unknown, TProductActions> => {
-    return async dispatch => {
-        let response = await getFilterProducts(payload)
-        dispatch(productActions.setProducts(response))
-    }}
-export default productReducer;
+    await thunk(dispatchMock, getStateMock, {})
+    //Check that the correct action was called
+    expect(dispatchMock).toBeCalledTimes(1)
+    expect(dispatchMock).toHaveBeenCalledWith(productActions.setProducts(undefined))
+})
+productMock.getFilterProducts.mockReturnValue(Promise.resolve([product]))
+test('Data about sorted products should be received and saved ', async ()=>{
+    const thunk = getFilterProduct('pizza')
+
+    const dispatchMock = jest.fn()
+    const getStateMock = jest.fn()
+
+    await thunk(dispatchMock, getStateMock, {})
+
+    expect(dispatchMock).toBeCalledTimes(1)
+    expect(dispatchMock).toHaveBeenCalledWith(productActions.setProducts(undefined))
+})

@@ -11,10 +11,13 @@ let product = {
     price:19,
     count:1,
     isDrink: false,
-    image: "/img/Pizza.png",
+    image: {
+        large:"/img/Pizza.png",
+        small:"/img/Pizza.png"
+    },
     isDiscount: false
 }
-it('length cartProducts should be incremented', ()=>{
+test('length cartProducts should be incremented', ()=>{
     //1.Create action
     let action = cartActions.setCartProducts(product)
     //2.Create new state after call action
@@ -22,7 +25,7 @@ it('length cartProducts should be incremented', ()=>{
     //3.Expectation new state
     expect(newState.cartProducts.length).toBe(1)
 })
-it('new product should be correct', () =>{
+test('new product should be correct', () =>{
     //1.Create action
     let action = cartActions.setCartProducts(product)
     //2.Create new state after call action
@@ -30,7 +33,7 @@ it('new product should be correct', () =>{
     //3.Expectation new state
     expect(newState.cartProducts[0]).toBe(product)
 })
-it('length cartProduct should be decremented', () =>{
+test('length cartProduct should be decremented', () =>{
     let state = {
         isLoaded: true,
         cartProducts: [
@@ -41,7 +44,10 @@ it('length cartProduct should be decremented', () =>{
                 price:19,
                 count:1,
                 isDrink: false,
-                image: "/img/Pizza.png",
+                image: {
+                    large:"/img/Pizza.png",
+                    small:"/img/Pizza.png"
+                },
                 isDiscount: false
             }
         ]

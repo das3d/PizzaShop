@@ -1,4 +1,4 @@
-import {getFilterProducts, getPizzas} from "../../DAL/API";
+import {productAPI} from "../../DAL/API";
 import {TActions, TRootState} from "../store";
 import {ThunkAction} from "redux-thunk";
 
@@ -45,7 +45,7 @@ export const productActions = {
 
 export const getAllPizzas = ():ThunkAction<void, TRootState, unknown, TProductActions> => {
     return async dispatch => {
-        let response = await getPizzas();
+        let response = await productAPI.getPizzas();
         dispatch(productActions.setProducts(response));
         console.log(response)
 
@@ -54,7 +54,7 @@ export const getAllPizzas = ():ThunkAction<void, TRootState, unknown, TProductAc
 }
 export const getFilterProduct = (payload:string):ThunkAction<void, TRootState, unknown, TProductActions> => {
     return async dispatch => {
-        let response = await getFilterProducts(payload)
+        let response = await productAPI.getFilterProducts(payload)
         dispatch(productActions.setProducts(response))
     }}
 export default productReducer;

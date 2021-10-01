@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch} from "react-redux";
 import {cartActions} from '../redux/reducers/cartReducer';
 
-export const CartButton = (props) => {
+export const  CartButton = (props) => {
     const dispatch = useDispatch()
     let setProduct = (description) =>{
         dispatch(cartActions.setCartProducts(description))

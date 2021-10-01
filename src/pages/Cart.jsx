@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import BuyerForm from '../components/BuyerForm';
 import ProductCart from '../components/ProductCart';
 import { useSelector } from 'react-redux'
-import { getAllPizzas } from '../redux/reducers/productReducer';
 import { getCartProduct } from '../selectors/productSelector'
-import { useDispatch } from 'react-redux';
+
 const Cart = () => {
 
     let descriptionProducts = useSelector(getCartProduct);
